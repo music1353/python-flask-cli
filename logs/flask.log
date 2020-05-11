@@ -2,3 +2,8 @@
 [2020-05-11 03:28:09,515][user.py:11][INFO][123145408675840] - Sunccessfully get uesrs info
 [2020-05-11 03:30:40,793][user.py:11][INFO][123145369878528] - Sunccessfully get uesrs info
 [2020-05-11 12:26:38,175][user.py:11][INFO][123145554227200] - Successfully get uesrs info
+[2020-05-11 17:20:04,954][user.py:29][ERROR][123145368068096] - File "//anaconda3/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 590, in do_execute: [ProgrammingError] (psycopg2.errors.UndefinedColumn) column "uid" of relation "users" does not exist
+LINE 1: INSERT INTO users (uid, name, phone) VALUES (7, 'rosie', '09...
+                           ^
+
+[2020-05-11 18:16:28,910][auth.py:34][ERROR][123145463844864] - File "/Users/jensonsu/MyProject/Online OST/online-ost-api/app/models/auth.py", line 27, in insert_one: [ZeroDivisionError] division by zero

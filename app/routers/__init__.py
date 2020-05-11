@@ -1,25 +1,35 @@
-from flask import jsonify
-def resp_wrapper(res, msg):
-    resp = {
-        'result': res,
-        'msg': msg
-    }
-    return jsonify(resp)
-
-
-
-from .v1 import v1_base, v1_user
+from .v1 import v1_auth, v1_user
 from app.middleware import AuthSessionMiddle
 
-def before_my_blueprint():
-    print(111)
+def list_routes(app):
+    routes = []
+    
+    for rule in app.url_map.iter_rules():
+        method = str()
+        endpoint = rule.endpoint
+        
+        METHODS = ['GET', 'POST', 'PUT', 'DELETE']
+        for m in METHODS:
+            if m in list(rule.methods):
+                method = m
+                break
+        
+        if endpoint != 'static':
+            fmt = '{}  {}  --> {}'.format(method, rule, endpoint)
+            routes.append(fmt)
+
+    for r in routes:
+        print(r)
+
 
 def init_app(app):
-    app.register_blueprint(v1_base, url_prefix='/api/v1')
+    app.register_blueprint(v1_auth, url_prefix='/api/v1/auth')
     app.register_blueprint(v1_user, url_prefix='/api/v1/user')
 
     app.before_request_funcs = {
         # blueprint name: [list_of_functions]
         'user': [AuthSessionMiddle]
     }
+    
+    list_routes(app)
         

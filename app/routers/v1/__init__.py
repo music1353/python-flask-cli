@@ -1,2 +1,2 @@
-from .base import v1_base
+from .auth import v1_auth
 from .user import v1_user
