@@ -9,12 +9,14 @@ def list_routes(app):
         endpoint = rule.endpoint
         
         METHODS = ['GET', 'POST', 'PUT', 'DELETE']
+
+        method_list = list()
         for m in METHODS:
             if m in list(rule.methods):
-                method = m
-                break
+                method_list.append(m)
         
         if endpoint != 'static':
+            method = ','.join(method_list)
             fmt = '{}  {}  --> {}'.format(method, rule, endpoint)
             routes.append(fmt)
 
