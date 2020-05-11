@@ -1,0 +1,5 @@
+flask
+gunicorn
+gevent
+flask_sqlalchemy
+psycopg2-binary
