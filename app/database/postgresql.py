@@ -5,7 +5,7 @@ db = SQLAlchemy()
 POSTGRES_INFO = {
     'user': 'jensonsu',
     'password': 'bug898beet201',
-    'db': 'gincli',
+    'db': 'flasktest',
     'host': 'localhost',
     'port': '5432',
 }
