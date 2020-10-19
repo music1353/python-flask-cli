@@ -1,10 +1,13 @@
 from flask import Blueprint, request, session
+from app.models import Role, Permission
 from app.models import Auth, User
 from app.pkg.resp_handler import resp_wrapper
+from app.middleware import permission_required
 
 v1_auth = Blueprint('auth', __name__)
 
 @v1_auth.route('/hello', methods=['GET'])
+@permission_required(role=[Role.USER])
 def hello():
     return 'hello world'
 

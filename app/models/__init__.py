@@ -14,5 +14,7 @@ class SQLSerial:
         return res
 
 
+from .role import Role
+from .permission import Permission
 from .user import User
 from .auth import Auth

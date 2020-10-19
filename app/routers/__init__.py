@@ -1,5 +1,5 @@
 from .v1 import v1_auth, v1_user
-# from app.middleware import AuthSessionMiddle
+from app.middleware import AuthSessionMiddle
 
 def list_routes(app):
     routes = []
@@ -28,10 +28,10 @@ def init_app(app):
     app.register_blueprint(v1_auth, url_prefix='/api/v1/auth')
     app.register_blueprint(v1_user, url_prefix='/api/v1/user')
 
-    # app.before_request_funcs = {
-    #     # blueprint name: [list_of_functions]
-    #     'user': [AuthSessionMiddle]
-    # }
+    app.before_request_funcs = {
+        # blueprint name: [list_of_functions]
+        'user': [AuthSessionMiddle]
+    }
     
     list_routes(app)
         
