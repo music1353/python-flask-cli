@@ -18,7 +18,7 @@ def create_app(config):
     handler.setFormatter(formatter)
 
     # init app
-    database.init_app(app)
+    # database.init_app(app)
     routers.init_app(app)
 
     return app

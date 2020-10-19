@@ -7,3 +7,59 @@ LINE 1: INSERT INTO users (uid, name, phone) VALUES (7, 'rosie', '09...
                            ^
 
 [2020-05-11 18:16:28,910][auth.py:34][ERROR][123145463844864] - File "/Users/jensonsu/MyProject/Online OST/online-ost-api/app/models/auth.py", line 27, in insert_one: [ZeroDivisionError] division by zero
+[2020-05-12 11:49:38,535][app.py:1891][ERROR][123145318297600] - Exception on /api/v1/user [GET]
+Traceback (most recent call last):
+  File "//anaconda3/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    cursor, statement, parameters, context
+  File "//anaconda3/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 590, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: users
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "//anaconda3/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "//anaconda3/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "//anaconda3/lib/python3.7/site-packages/flask_restful/__init__.py", line 468, in wrapper
+    resp = resource(*args, **kwargs)
+  File "//anaconda3/lib/python3.7/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "//anaconda3/lib/python3.7/site-packages/flask_restful/__init__.py", line 583, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/jensonsu/MyProject/python-flask-cli/app/routers/v1/user.py", line 21, in get
+    res = User.get_all_users()
+  File "/Users/jensonsu/MyProject/python-flask-cli/app/models/user.py", line 35, in get_all_users
+    query = User.query.all()
+  File "//anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3246, in all
+    return list(self)
+  File "//anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3405, in __iter__
+    return self._execute_and_instances(context)
+  File "//anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3430, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "//anaconda3/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 984, in execute
+    return meth(self, multiparams, params)
+  File "//anaconda3/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 293, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "//anaconda3/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1103, in _execute_clauseelement
+    distilled_params,
+  File "//anaconda3/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1288, in _execute_context
+    e, statement, parameters, cursor, context
+  File "//anaconda3/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1482, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "//anaconda3/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 178, in raise_
+    raise exception
+  File "//anaconda3/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    cursor, statement, parameters, context
+  File "//anaconda3/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 590, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.uid AS users_uid, users.name AS users_name, users.phone AS users_phone 
+FROM users]
+(Background on this error at: http://sqlalche.me/e/e3q8)
+[2020-05-12 11:50:41,410][user.py:22][INFO][123145432449024] - Successfully get uesrs info
+[2020-05-12 11:51:25,931][user.py:22][INFO][123145314869248] - Successfully get uesrs info
+[2020-05-12 13:42:33,930][user.py:22][INFO][123145522606080] - Successfully get uesrs info
+[2020-05-12 13:43:28,664][user.py:22][INFO][123145358471168] - Successfully get uesrs info
+[2020-05-12 13:43:29,565][user.py:22][INFO][123145363726336] - Successfully get uesrs info
