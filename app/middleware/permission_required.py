@@ -20,12 +20,12 @@ def permission_required(role=[], permission=[]):
                     elif session['role'] not in role:
                         return resp_wrapper('', "Error: you don't have the authority."), 403
 
-                if permission:
-                    auth_collect = db['auth']
-                    auth_doc = auth_collect.find_one({'id': session['id']}, {'_id': False})
+                # if permission:
+                #     auth_collect = db['auth']
+                #     auth_doc = auth_collect.find_one({'id': session['id']}, {'_id': False})
 
-                    if auth_doc['permission'] not in permission:
-                        return resp_wrapper('', "Error: you don't have the authority."), 403
+                #     if auth_doc['permission'] not in permission:
+                #         return resp_wrapper('', "Error: you don't have the authority."), 403
                 
                 return f(*args, **kwargs)
             except Exception as e:

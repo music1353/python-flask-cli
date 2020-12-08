@@ -3,8 +3,8 @@ import pymongo
 MONGO_INFO = {
     'user': 'admin',
     'password': 'mongoadmin',
-    'db': 'horizone',
-    'host': '35.234.23.126',
+    'db': 'myMongo'
+    'host': 'localhost',
     'port': '27017',
 }
 
@@ -15,7 +15,11 @@ mongo_uri = 'mongodb://{dbuser}:{dbpass}@{dbhost}:{dbport}'.format(
     dbport=MONGO_INFO['port']
 )
 
+try:
+    client = pymongo.MongoClient(mongo_uri, connect=False)
+    print('Successfully connect to mongodb!')
+except Exception as err:
+    print('Error: connect to mongodb failed.', err)
 
-client = pymongo.MongoClient(mongo_uri, connect=False)
-db = client['myMongo']
+db = client[MONGO_INFO['db']]
 
